@@ -1,0 +1,33 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: discovery-server
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/web
+          filters: SetPath=/
+        - id: discovery-server-static
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/**
+        - id: jwt-authentication-svc
+          uri: lb://jwt-authentication-svc
+          predicates:
+            - Path=/v1/api/authentication/**
+          filters: JwtAuthFilter
+        - id: clientmanagement-service
+          uri: lb://clientmanagement-svc
+          predicates:
+            - Path=/v1/api/clients/**
+          filters: JwtAuthFilter
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
