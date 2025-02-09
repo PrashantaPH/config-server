@@ -19,6 +19,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://discovery-server-q5cw.onrender.com/eureka/
     instance:
-      hostname: localhost
+      hostname: discovery-server-q5cw.onrender.com
