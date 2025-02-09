@@ -31,3 +31,5 @@ eureka:
   client:
     service-url:
       defaultZone: https://discovery-server-q5cw.onrender.com/eureka/
+      register-with-eureka: false
+      fetch-registry: true
