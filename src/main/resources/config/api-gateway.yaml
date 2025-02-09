@@ -8,12 +8,12 @@ spring:
     gateway:
       routes:
         - id: discovery-server
-          uri: http://localhost:8761
+          uri: https://discovery-server-q5cw.onrender.com
           predicates:
             - Path=/eureka/web
           filters: SetPath=/
         - id: discovery-server-static
-          uri: http://localhost:8761
+          uri: https://discovery-server-q5cw.onrender.com
           predicates:
             - Path=/eureka/**
         - id: jwt-authentication-svc
@@ -30,4 +30,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://discovery-server-q5cw.onrender.com/eureka/
